@@ -8,10 +8,11 @@ function setPhotographerCard(data) {
     const link = document.createElement('a');
       const img = document.createElement( 'img' );
           img.setAttribute("src", picture);
-          img.setAttribute("alt", name);
+          img.setAttribute("alt", "");
       const h2 = document.createElement( 'h2' );
           h2.textContent = name;
     link.setAttribute("href","#");
+    link.setAttribute("aria-label",name);
     link.classList.add('photographerCard_link');
     link.appendChild(img);
     link.appendChild(h2);
