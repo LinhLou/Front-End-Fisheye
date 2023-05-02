@@ -1,9 +1,101 @@
-header {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+html {
+  background-color: white;
+}
+
+body {
+  max-width: 1440px;
+  min-width: 1000px;
+  min-height: 1024px;
+  margin: auto;
+  background-color: white;
+  font-family: "DM Sans", sans-serif;
+  color: black;
+}
+
+main {
+  margin-top: 8px;
+}
+
+.heading {
+  position: relative;
+  height: 120px;
+  width: 100%;
+}
+.heading_img {
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  top: 42px;
+  left: 100px;
+}
+.heading_text {
+  position: absolute;
+  top: 44px;
+  right: 100px;
+  font-size: 36px;
+  color: #901C1C;
+}
+.heading_text-hiding {
+  display: none;
+}
+
+.photographer_section {
+  margin: 100px;
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  row-gap: 80px;
+}
+
+.photographerCard {
+  height: 310px;
+  width: 200px;
+  margin: auto;
+}
+.photographerCard_link {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 90px;
+}
+.photographerCard_link img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.photographerCard_link h2 {
+  margin-top: 20px;
+  font-size: 36px;
+  color: #D3573C;
+  width: max-content;
+  line-height: 47px;
+}
+.photographerCard_infos {
+  text-align: center;
+  font-weight: 400;
+}
+.photographerCard_infos-location {
+  color: #901C1C;
+  font-size: 13px;
+  line-height: 17px;
+}
+.photographerCard_infos-logan {
+  font-size: 10px;
+  line-height: 13px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.photographerCard_infos-price {
+  font-size: 9px;
+  line-height: 12px;
+  color: #757575;
 }
 
 /* h1 {

@@ -1,21 +1,19 @@
 @use "sass:math";
 @import "./utils/variables";
 // @import "./utils/mixins";
-// @import "./base/base.scss";
+@import "./base/base.scss";
 // @import "./composants/bouton";
-// @import "./layout/header";
-// @import "./layout/footer";
-// @import "./page/loading";
-// @import "./page/home";
+@import "./layout/header";
+@import "./page/home";
 // @import "./page/menu";
 
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 90px;
-}
+// header {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+//   height: 90px;
+// }
 
 /* h1 {
     color: #901C1C;

@@ -4,7 +4,25 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
+html{
+  background-color: white;
+}
+
+body{
+  max-width: 1440px;
+  min-width: 1000px;
+  min-height: 1024px;
+  margin:auto;
+  background-color: white;
+  font-family: $fontFamilyBase;
+  color:$colorTextBase;
+}
+main{
+  margin-top:8px;
+}
+
 // input:disabled{
 //   background-color: grey;
 // }

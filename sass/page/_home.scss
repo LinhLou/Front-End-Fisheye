@@ -1,0 +1,50 @@
+.photographer_section{
+  margin:100px;
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  row-gap: 80px;
+}
+.photographerCard{
+  height: 310px;
+  width: 200px;
+  margin: auto;
+  &_link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & img{
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    & h2{
+      margin-top:20px;
+      font-size: $acceuilCardFontLarge;
+      color:$colorTextMdedium;
+      width: max-content;
+      line-height: 47px;
+    }
+  }
+  &_infos{
+    text-align: center;
+    font-weight: 400;
+    &-location{
+      color:$colorTextDark;
+      font-size: $acceuilCardFontMedium;
+      line-height: 17px;
+    }
+    &-logan{
+      font-size: $acceuilCardFontSmall;
+      line-height: 13px;
+      margin-top:3px;
+      margin-bottom: 3px;
+    }
+    &-price{
+      font-size:$acceuilCardFontSX;
+      line-height: 12px;
+      color:#757575;
+    }
+  }
+}

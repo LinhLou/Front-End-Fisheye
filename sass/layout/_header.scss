@@ -1,0 +1,22 @@
+.heading{
+  position: relative;
+  height: 120px;
+  width: 100%;
+  &_img{
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    top:42px;
+    left:100px;
+  }
+  &_text{
+    position: absolute;
+    top:44px;
+    right:100px;
+    font-size: $acceuilCardFontLarge;
+    color: $colorTextDark;
+    &-hiding{
+      display: none;
+    }
+  }
+}

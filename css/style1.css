@@ -1,20 +1,19 @@
 @import url("photographer.css");
 
-body {
+/* body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
-}
+} */
 
-
-header {
+/* header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 90px;
-} 
+}  */
 
-h1 {
+/* h1 {
     color: #901C1C;
     margin-right: 100px;
 }
@@ -22,16 +21,16 @@ h1 {
 .logo {
     height: 50px;
     margin-left: 100px;
-}
+} */
 
-.photographer_section {
+/* .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
-}
+} */
 
-.photographer_section article {
+/* .photographer_section article {
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -47,4 +46,4 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
-}
+} */
