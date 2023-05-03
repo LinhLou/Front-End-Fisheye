@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <link href="css/style1.css" rel="stylesheet" type="text/css" /> -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -14,11 +13,21 @@
       <h1 class="heading_text heading_text-hiding">Nos photographes</h1>
     </header>
     <main id="main">
+      <section class="_photographeIntro">
+        <div class="_infos">
+          <h1 class="_infos_name">name</h1>
+          <h2 class="_infos_location">location</h2>
+          <p class="_infos_slogan">hello test</p>
+        </div>
+        <button class="btn btn-large">Contactez-moi</button>
+        <img class="_photo" src="" alt="photo of photographer">
+      </section>
+      
       <!-- <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div> -->
     </main>
-    <div id="contact_modal">
+    <!-- <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
@@ -32,7 +41,7 @@
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
-		</div>
+		</div> -->
     <script src="scripts/models/getPhotographerInfos.js"></script>
     <script src="scripts/models/setPhotographerCard.js"></script>
     <script src="/scripts/pages/photographer.js"></script>

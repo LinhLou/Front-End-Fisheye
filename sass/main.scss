@@ -2,10 +2,10 @@
 @import "./utils/variables";
 // @import "./utils/mixins";
 @import "./base/base.scss";
-// @import "./composants/bouton";
+@import "./composants/button";
 @import "./layout/header";
 @import "./page/home";
-// @import "./page/menu";
+@import "./page/photographer";
 
 // header {
 //   display: flex;
