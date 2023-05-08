@@ -4,38 +4,29 @@ function setPhotographerCard(data) {
   const picture = `assets/photographers/${portrait}`;
 
   function setPhotographerCardDOM() {
-    // link
-    const link = document.createElement('a');
-      const img = document.createElement('img');
-          img.setAttribute("src", picture);
-          img.setAttribute("alt", "");
-      const h2 = document.createElement('h2');
-          h2.textContent = name;
-    link.setAttribute("href",`../../photographer.html#${id}`);
-    link.setAttribute("aria-label",name);
-    link.classList.add('photographerCard_link');
-    link.appendChild(img);
-    link.appendChild(h2);
-    // infos
-    const divInfos = document.createElement('div');
-      const pLocation = document.createElement('p');
-          pLocation.classList.add('photographerCard_infos-location');
-          pLocation.textContent = `${city}, ${country}`;
-      const pSlogan = document.createElement('p');
-          pSlogan.classList.add('photographerCard_infos-logan');
-          pSlogan.textContent = tagline;
-      const pPrice = document.createElement('p');
-          pPrice.classList.add('photographerCard_infos-price');
-          pPrice.textContent = `${price}€/jour`;
-    divInfos.classList.add('photographerCard_infos');
-    divInfos.appendChild(pLocation);
-    divInfos.appendChild(pSlogan);
-    divInfos.appendChild(pPrice);
-    // card
+    const img = document.createElement('img');
+      img.setAttribute("src", picture);
+      img.setAttribute("alt", "");
+      img.classList.add('article_img');
+    const h2 = document.createElement('h2');
+      h2.textContent = name;
+      h2.classList.add('article_name');
+    const pLocation = document.createElement('p');
+      pLocation.classList.add('article_location');
+      pLocation.textContent = `${city}, ${country}`;
+    const pSlogan = document.createElement('p');
+      pSlogan.classList.add('article_logan');
+      pSlogan.textContent = tagline;
+    const pPrice = document.createElement('p');
+      pPrice.classList.add('article_price');
+      pPrice.textContent = `${price}€/jour`;
     const article = document.createElement('article');
-    article.classList.add('photographerCard');
-    article.appendChild(link);
-    article.appendChild(divInfos);
+    article.classList.add('article');
+    article.appendChild(img);
+    article.appendChild(h2);
+    article.appendChild(pLocation);
+    article.appendChild(pSlogan);
+    article.appendChild(pPrice);
       return (article);
   }
   return { name,  id, city, country, tagline, price, picture, setPhotographerCardDOM }
