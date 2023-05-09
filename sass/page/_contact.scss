@@ -1,0 +1,52 @@
+body{
+  position: relative;
+}
+.modal{
+  border-radius: 5px;
+  position: absolute;
+  top:62px;
+  left:50%;
+  right: 50%;
+  transform: translateX(-50%);
+  width: 669px;
+  background-color: #DB8876;
+  padding: 15px 35px 38px 35px;
+  color: #312E2E;
+  &-header{
+    display: flex;
+    justify-content: space-between;  
+    align-items: baseline;
+    margin-bottom: 19px;
+  }
+  &-heading{
+    font-size: $photographeFontLarge;
+  }
+  &-close{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+}
+.form{
+  &Data{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    font-size: $acceuilCardFontLarge;
+    &-text{
+      height: 68px;
+      border: none;
+      outline:none;
+      font-size: inherit;
+      border-radius:5px;
+      &--area{
+        height: 170px;
+        resize: none;
+      }
+    }
+  }
+  & button{
+    margin-top:26px;
+  }
+
+}

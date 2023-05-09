@@ -220,7 +220,7 @@ main {
   justify-content: end;
 }
 .encart div {
-  background-color: #D3573C;
+  background-color: #DB8876;
   margin-right: -50px;
   width: fit-content;
   padding: 21px 34px;
@@ -231,9 +231,56 @@ main {
   margin-right: 40px;
 }
 
-/* h1 {
-    color: #901C1C;
-    margin-right: 100px;
-} */
+body {
+  position: relative;
+}
+
+.modal {
+  border-radius: 5px;
+  position: absolute;
+  top: 62px;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  width: 669px;
+  background-color: #DB8876;
+  padding: 15px 35px 38px 35px;
+  color: #312E2E;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 19px;
+}
+.modal-heading {
+  font-size: 64px;
+}
+.modal-close {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.formData {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  font-size: 36px;
+}
+.formData-text {
+  height: 68px;
+  border: none;
+  outline: none;
+  font-size: inherit;
+  border-radius: 5px;
+}
+.formData-text--area {
+  height: 170px;
+  resize: none;
+}
+.form button {
+  margin-top: 26px;
+}
 
 /*# sourceMappingURL=style.css.map */

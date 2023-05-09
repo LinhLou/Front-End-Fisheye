@@ -104,7 +104,7 @@
     }
   }
 }
-
+//  section encart
 .encart{
   background-color: transparent;
   position: sticky;
@@ -112,7 +112,7 @@
   display: flex;
   justify-content: end;
   & div{
-    background-color: $colorBackgroundMedium;
+    background-color: #DB8876;
     margin-right:-50px;
     width: fit-content;
     padding:21px 34px;
