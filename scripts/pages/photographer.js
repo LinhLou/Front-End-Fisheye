@@ -31,6 +31,13 @@ async function displayPhotographer(photographer, medias) {
     const mediaCard = mediasCard.setMediaCardDOM();
     mediasSection.appendChild(mediaCard);
   })
+
+// -------------encart----------------------------------//
+  const main = document.getElementById('_main');
+  const divEncart = document.createElement('div');
+    divEncart.innerHTML =`<div>${medias[0].likes} <i class="fa-solid fa-heart"></i>${photographer.price}€ / jour </div>`;
+    divEncart.classList.add('encart');
+  main.appendChild(divEncart);
 };
 
 async function initPhotographe(){
@@ -39,6 +46,5 @@ async function initPhotographe(){
   const idPhotographer = href.split('#')[1]; 
   const {photographer, medias} = await getPhotographerDataById(idPhotographer);
   displayPhotographer(photographer[0], medias);
-  
 }
 initPhotographe();

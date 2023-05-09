@@ -129,8 +129,11 @@ main {
   row-gap: 80px;
 }
 
+#_main {
+  padding: 0 100px;
+}
+
 ._photographeIntro {
-  margin: 0 100px;
   padding-left: 50px;
   padding-right: 50px;
   width: 100%;
@@ -158,8 +161,12 @@ main {
   color: #525252;
 }
 
+._select {
+  margin-top: 20px;
+  margin-bottom: 58px;
+}
+
 ._photographeMedias {
-  margin: 100px;
   width: 100%;
   display: grid;
   grid-template-columns: 350px 1fr 350px;
@@ -203,6 +210,25 @@ main {
   justify-content: end;
   align-items: center;
   height: 31px;
+}
+
+.encart {
+  background-color: transparent;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: end;
+}
+.encart div {
+  background-color: #D3573C;
+  margin-right: -50px;
+  width: fit-content;
+  padding: 21px 34px;
+  font-size: 24px;
+  border-radius: 5px 5px 0 0;
+}
+.encart div i {
+  margin-right: 40px;
 }
 
 /* h1 {
