@@ -3,7 +3,7 @@
         const photographersSection = document.querySelector(".photographer_section");
         
         photographers.forEach((photographer) => {
-            const photographerModel = setPhotographerCard(photographer);
+            const photographerModel = setPhotographerCard(photographer,'');
             const photographerCardDOM = photographerModel.setPhotographerCardDOM();
             photographersSection.appendChild(photographerCardDOM);
             // add link to photographer

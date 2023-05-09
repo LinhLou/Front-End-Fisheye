@@ -1,56 +1,44 @@
-//code JavaScript lié à la page photographer.html
 
-async function photographerData(id){
-  const { photographers, media} = await getPhotographersInfos();
-  const photographer = photographers.filter((photographe)=>photographe.id==id);
-  const medias = media.filter((media)=>media.photographerId==id);
-  return {photographer, medias};
-}
+// display photographer page
 
-// display photographer Introduction
-
-// async function displayIntro(data){
-//   const {name,  city, country, tagline, portrait} = data;
-//   const photo = `assets/photographers/${portrait}`;
-//   const nameEle = document.querySelector('._infos_name');
-//     nameEle.innerHTML=name;
-//   const locationEle = document.querySelector('._infos_location');
-//     locationEle.innerHTML=`${city}, ${country}`;
-//   const sloganEle = document.querySelector('._infos_slogan');
-//     sloganEle.innerHTML = tagline;
-//   const photoEle = document.querySelector('._photo');
-//     photoEle.setAttribute('src',photo);
-//     photoEle.setAttribute('alt',name);
-// }
-
-async function displayIntro(photographer) {
+async function displayPhotographer(photographer, medias) {
+// -----------Introduction section ----------------------------------------//
   const photographersSection = document.querySelector("._photographeIntro");
-  const photographerIntro = setPhotographerCard(photographer);
-  const card = photographerIntro.setPhotographerCardDOM();
-  photographersSection.appendChild(card);
-  // add button
+  const photographerCards = setPhotographerCard(photographer,'');
+  const cardPhotographer = photographerCards.setPhotographerCardDOM();
+  photographersSection.appendChild(cardPhotographer);
+  // create a button
   const btn = document.createElement('button');
     btn.classList.add('btn', 'btn-large');
     btn.textContent="Contactez-moi";
-  card.removeChild(card.lastChild);// remove price
+  cardPhotographer.removeChild(cardPhotographer.lastChild);// remove price
+  // regroup name + location + slogan into a container
   const divInfo = document.createElement('div');
     divInfo.classList.add('_photographeIntro_infos');
-    divInfo.appendChild(card.children[1]);
-    divInfo.appendChild(card.children[1]);
-    divInfo.appendChild(card.children[1]);
-  card.appendChild(divInfo);
-  card.appendChild(btn);
-  card.appendChild(card.firstChild);
-  card.classList.add('article_photographer');
-    
+    divInfo.appendChild(cardPhotographer.children[1]);
+    divInfo.appendChild(cardPhotographer.children[1]);
+    divInfo.appendChild(cardPhotographer.children[1]);
+  // reorganisation article in photographer page
+  cardPhotographer.appendChild(divInfo);
+  cardPhotographer.appendChild(btn);
+  cardPhotographer.appendChild(cardPhotographer.firstChild);// move the photo to the end
+  // add new class to article in photographer page
+  cardPhotographer.classList.add('article_photographer');   
+// -----------Meadia section --------------------------------------------//
+  const mediasSection = document.querySelector("._photographeMedias");
+  medias.forEach((media)=>{
+    const mediasCard = setPhotographerCard(photographer,media);
+    const mediaCard = mediasCard.setMediaCardDOM();
+    mediasSection.appendChild(mediaCard);
+  })
 };
 
 async function initPhotographe(){
   // get id of photographer
   const {href} = window.location; 
   const idPhotographer = href.split('#')[1]; 
-  //get data
-  const {photographer} = await photographerData(idPhotographer);
-  displayIntro(photographer[0]);
+  const {photographer, medias} = await getPhotographerDataById(idPhotographer);
+  displayPhotographer(photographer[0], medias);
+  
 }
 initPhotographe();
