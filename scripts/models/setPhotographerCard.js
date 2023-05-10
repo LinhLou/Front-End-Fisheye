@@ -3,10 +3,14 @@ function setPhotographerCard(photographerData, mediaData) {
   const { name,  id, city, country, tagline, price, portrait } = photographerData;
 
   const {title,video, image, likes, date}= mediaData;
-  
+
   const picture = `assets/photographers/${portrait}`;
-  const photoSource =`assets/images/${name.split(' ')[0]}/${image}`;
-  const videoSource =`assets/images/${name.split(' ')[0]}/${video}`;
+
+  const typeMedia = ((video)=> video? 'video':'image')(video);
+
+  const mediaSource = `assets/images/${name.split(' ')[0]}/${(((image, video)=>image? image:video))(image, video)}`;
+
+  //  set card DOM of each photographer
   function setPhotographerCardDOM() {
     const img = document.createElement('img');
     img.setAttribute("src", picture);
@@ -33,31 +37,19 @@ function setPhotographerCard(photographerData, mediaData) {
     article.appendChild(pPrice);
     return (article);
   }
-  
+  // set card DOM of each media of photographer
   function setMediaCardDOM(){
     const articleMedia = document.createElement('article');
     articleMedia.classList.add('_articleMedia');
     
-    // link
+    // link media
     const link = document.createElement('a');
       link.setAttribute('href','#');
-      if(image){
-        const media = document.createElement('img');
-        media.setAttribute('src', photoSource);
-        media.setAttribute('alt',`${title}, closeup view`);
-        media.classList.add('_articleMedia-photo');
-        link.appendChild(media);
-      }else if(video){
-        const media = document.createElement('video');
-        media.setAttribute('controls','');
-        media.setAttribute('aria-label',`${title}, closeup view`);
-        media.classList.add('_articleMedia-video');
-          const sourceMediaEle = document.createElement('source');
-          sourceMediaEle.setAttribute('src',videoSource);
-          sourceMediaEle.setAttribute('type','video/mp4');
-            media.appendChild(sourceMediaEle);
-        link.appendChild(media);  
-      }  
+      const media = new mediaFactory(title,mediaSource);
+      const mediaCard = media.createCard(typeMedia);
+      mediaCard.classList.add('_articleMedia-media');
+    link.appendChild(mediaCard);
+
     // infos
     const infos = document.createElement('div');
       const photoTitle = document.createElement('h3');
@@ -77,6 +69,5 @@ function setPhotographerCard(photographerData, mediaData) {
       return (articleMedia);
   }
 
-
-  return { name,  id, city, country, tagline, price, picture, likes, date, photoSource, videoSource, setPhotographerCardDOM, setMediaCardDOM }
+  return { name,  id, city, country, tagline, price, picture, likes, date, mediaSource, setPhotographerCardDOM, setMediaCardDOM }
 }
