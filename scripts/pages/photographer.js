@@ -4,7 +4,7 @@
 async function displayPhotographer(photographer, medias) {
 // -----------Introduction section ----------------------------------------//
   const photographersSection = document.querySelector("._photographeIntro");
-  const photographerCards = setPhotographerCard(photographer,'');
+  const photographerCards = setPhotographerCard(photographer);
   const cardPhotographer = photographerCards.setPhotographerCardDOM();
   photographersSection.appendChild(cardPhotographer);
   // create a button
@@ -18,17 +18,17 @@ async function displayPhotographer(photographer, medias) {
     divInfo.appendChild(cardPhotographer.children[1]);
     divInfo.appendChild(cardPhotographer.children[1]);
     divInfo.appendChild(cardPhotographer.children[1]);
-  // reorganisation article in photographer page
+  // reorganisation article
   cardPhotographer.appendChild(divInfo);
   cardPhotographer.appendChild(btn);
   cardPhotographer.appendChild(cardPhotographer.firstChild);// move the photo to the end
-  // add new class to article in photographer page
+  // add new class to article
   cardPhotographer.classList.add('article_photographer');   
 // -----------Meadia section --------------------------------------------//
   const mediasSection = document.querySelector("._photographeMedias");
-  medias.forEach((media)=>{
-    const mediasCard = setPhotographerCard(photographer,media);
-    const mediaCard = mediasCard.setMediaCardDOM();
+  medias.forEach((mediaData)=>{
+    const media = setMediaCard(photographer.name,mediaData);
+    const mediaCard = media.setMediaCardDOM();
     mediasSection.appendChild(mediaCard);
   })
 
