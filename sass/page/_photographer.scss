@@ -31,32 +31,89 @@
 }
 
 // trie
-._select{
-    margin-top:20px;
-    margin-bottom:58px;
+._selectSection{
+  margin-top:20px;
+  margin-bottom:58px;
+  height: 30px;
+  display: grid;
+  grid-template-columns: max-content 170px;
+  gap: 30px;
+  font-size: $photographeFontSmall;
 }
-// ._select{
-//   margin-top:20px;
-//   margin-bottom:58px;
-//   & label{
-//     margin-right: 25px;
-//   }
-//   &-container{
-//     background-color: $colorBackgroundDark;
-//     width: 170px;
-//     height: 69px;
-//     color: white;
-//     padding:23px 20px;
-//     font-size: $photographeFontSmall;
-//     border: none;
-//     border-radius: 5px;
-//   }
-//   &-item{
-//     width: 100%;
-//     height: 170px;
-//     border-bottom: 1px solid white;
-//   }
-// }
+._select{
+  width: 170px;
+  position: relative;
+  &-arrow-up{
+    font-size: 15px;
+    position: absolute;
+    right: 20px;
+    top:20px;
+    z-index: 3;
+    color: white;
+  }
+  &-list,&-btn{
+    list-style: none;
+    width: 100%;
+    position: absolute;
+    top:0;
+    border: none;
+    background-color: $colorBackgroundDark;
+    color: white;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  &-btn, &-item{
+    width: 100%;
+    height: 59px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+    font-size: $photographeFontSmall;
+    font-family: $fontFamilyBase;
+  }
+  &-item:nth-child(1)::before, &-item:nth-child(1)::after{
+    content: '';
+    border-top: 1px solid whitesmoke;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    background-color: transparent;
+  }
+  &-item:nth-child(1)::before{
+    top:59px;
+  }
+  &-item:nth-child(1)::after{
+    bottom:59px;
+  }
+  &-item:hover{
+    background-color: darken($colorBackgroundDark, 5%);
+  }
+
+  &-list{
+    opacity: 0;
+    transform: scaleY(59px) ;transform-origin:top;
+    z-index: -1;
+  }
+  &-btn{
+    z-index: 1;
+  }
+
+
+  &-list--visible{
+    transform: scaleY(100%);
+    opacity:1;
+    z-index: 2;
+    transition: opacity 0.3s ease-out, transform 0.5s ease-in-out;
+  }
+
+  &-arrow--up{
+    transform: rotate(-0.5turn);
+    transition: transform 0.3s ease-out;
+  }
+}
+
+
 
 
 // section media

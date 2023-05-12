@@ -16,13 +16,19 @@
     <main id="_main">
       <section class="_photographeIntro">
       </section>
-      <div class="_select">
-        <label for="category-select">Trier par</label>
-        <select name="category" id="category-select" class="_select-container">
-          <option value="popularité">Popularité </option>
-          <option value="date">Date </option>
-          <option value="titre">Titre </option>
-        </select>
+      <div class="_selectSection">
+        <p class="_select-text">Trier par</p>
+        <div class="_select">
+          <span class="_select-arrow-up">
+            <i class="fa-solid fa-chevron-down"></i>
+          </span>
+          <button class="_select-btn">Title</button>
+          <ul class="_select-list">
+            <li class="_select-item">Popularité</li>
+            <li class="_select-item">Date</li>
+            <li class="_select-item">Title</li>
+          </ul>
+        </div>
       </div>
       <section class="_photographeMedias">
       </section>
@@ -58,7 +64,9 @@
     <script src="scripts/models/getData.js"></script>
     <script src="scripts/models/photographerFactory.js"></script>
     <script src="scripts/models/mediaFactory.js"></script>
+    <script src="/scripts/models/sortData.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/select.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

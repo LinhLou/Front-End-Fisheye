@@ -42,7 +42,7 @@ main {
   font-size: 20px;
 }
 .btn:hover {
-  background-color: #ae2222;
+  background-color: #7b1818;
 }
 
 .heading {
@@ -161,9 +161,84 @@ main {
   color: #525252;
 }
 
-._select {
+._selectSection {
   margin-top: 20px;
   margin-bottom: 58px;
+  height: 30px;
+  display: grid;
+  grid-template-columns: max-content 170px;
+  gap: 30px;
+  font-size: 18px;
+}
+
+._select {
+  width: 170px;
+  position: relative;
+}
+._select-arrow-up {
+  font-size: 15px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 3;
+  color: white;
+}
+._select-list, ._select-btn {
+  list-style: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  border: none;
+  background-color: #901C1C;
+  color: white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+._select-btn, ._select-item {
+  width: 100%;
+  height: 59px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 18px;
+  font-family: "DM Sans", sans-serif;
+}
+._select-item:nth-child(1)::before, ._select-item:nth-child(1)::after {
+  content: "";
+  border-top: 1px solid whitesmoke;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  background-color: transparent;
+}
+._select-item:nth-child(1)::before {
+  top: 59px;
+}
+._select-item:nth-child(1)::after {
+  bottom: 59px;
+}
+._select-item:hover {
+  background-color: #7b1818;
+}
+._select-list {
+  opacity: 0;
+  transform: scaleY(59px);
+  transform-origin: top;
+  z-index: -1;
+}
+._select-btn {
+  z-index: 1;
+}
+._select-list--visible {
+  transform: scaleY(100%);
+  opacity: 1;
+  z-index: 2;
+  transition: opacity 0.3s ease-out, transform 0.5s ease-in-out;
+}
+._select-arrow--up {
+  transform: rotate(-0.5turn);
+  transition: transform 0.3s ease-out;
 }
 
 ._photographeMedias {

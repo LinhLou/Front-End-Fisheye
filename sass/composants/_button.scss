@@ -16,6 +16,6 @@
     font-size: 20px;
   }
   &:hover{
-    background-color: lighten($colorBackgroundDark, 7%);
+    background-color: darken($colorBackgroundDark, 5%);
   }
 }
