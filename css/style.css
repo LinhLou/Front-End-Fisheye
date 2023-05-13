@@ -42,7 +42,7 @@ main {
   font-size: 20px;
 }
 .btn:hover {
-  background-color: #7b1818;
+  background-color: #6e1515;
 }
 
 .heading {
@@ -218,8 +218,8 @@ main {
 ._select-item:nth-child(1)::after {
   bottom: 59px;
 }
-._select-item:hover {
-  background-color: #7b1818;
+._select-item:hover, ._select-item--selected {
+  background-color: #6e1515;
 }
 ._select-list {
   opacity: 0;

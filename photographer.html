@@ -17,16 +17,17 @@
       <section class="_photographeIntro">
       </section>
       <div class="_selectSection">
-        <p class="_select-text">Trier par</p>
+        <div class="_select-text" id="_select-text">Trier par</div>
         <div class="_select">
           <span class="_select-arrow-up">
             <i class="fa-solid fa-chevron-down"></i>
           </span>
-          <button class="_select-btn">Title</button>
-          <ul class="_select-list">
-            <li class="_select-item">Popularité</li>
-            <li class="_select-item">Date</li>
-            <li class="_select-item">Title</li>
+          <button class="_select-btn" role="button"
+          id="selectButton" aria-haspopup="true" aria-controls="menuSelect">Popularité</button>
+          <ul class="_select-list" id="menuSelect" aria-labelledby="_select-text" role="listbox" aria-activedescendant="opt1">
+            <li class="_select-item" id ="opt1" aria-labelledby="_select-text opt1" role="option">Popularité</li>
+            <li class="_select-item" id ="opt2" aria-labelledby="_select-text opt2" role="option">Date</li>
+            <li class="_select-item" id ="opt3" aria-labelledby="_select-text opt3" role="option">Title</li>
           </ul>
         </div>
       </div>
