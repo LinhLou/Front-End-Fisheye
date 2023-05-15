@@ -23,11 +23,14 @@ main {
   margin-top: 8px;
 }
 
+*:focus {
+  outline: 2px solid black;
+}
+
 .btn {
   width: 170px;
   height: 69px;
   border: none;
-  outline: none;
   cursor: pointer;
   border-radius: 5px;
   background-color: #901C1C;
@@ -50,12 +53,18 @@ main {
   height: 120px;
   width: 100%;
 }
-.heading_img {
+.heading_link {
+  display: block;
   width: 200px;
   height: 50px;
   position: absolute;
   top: 42px;
   left: 100px;
+}
+.heading_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .heading_text {
   position: absolute;
@@ -218,8 +227,9 @@ main {
 ._select-item:nth-child(1)::after {
   bottom: 59px;
 }
-._select-item:hover, ._select-item--selected {
+._select-item:hover, ._select-item--selected, ._select-item:focus {
   background-color: #6e1515;
+  outline: none;
 }
 ._select-list {
   opacity: 0;

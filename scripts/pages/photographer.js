@@ -11,6 +11,7 @@ async function displayIntro(photographer){
   photographersSection.appendChild(cardPhotographer);
   // create a button
   const btn = document.createElement('button');
+    btn.setAttribute('role','button');
     btn.classList.add('btn', 'btn-large');
     btn.textContent="Contactez-moi";
   cardPhotographer.removeChild(cardPhotographer.lastChild);// remove price
@@ -60,7 +61,7 @@ async function initMedia(){
 
   const btnSelect = document.querySelector('._select-btn');
   const typeToSort = ((ele)=>ele.textContent=='Popularité'? 'likes': ele.textContent=='Date' ? 'date': 'title')(btnSelect);
-  const mediasSort = new sortData(medias);
+  const mediasSort = new SortData(medias);
   const mediasSortByType = mediasSort.sortType(typeToSort);
 
   displayMedias(photographer[0],mediasSortByType);

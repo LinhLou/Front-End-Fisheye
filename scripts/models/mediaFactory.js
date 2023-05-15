@@ -5,7 +5,7 @@ function setMediaCard(photographerName,mediaData) {
   const typeMedia = ((video)=> video? 'video':'image')(video);
   const mediaSource = `assets/images/${photographerName.split(' ')[0]}/${(((image, video)=>image? image:video))(image, video)}`;
 
-  class mediaFactory {
+  class MediaFactory {
     constructor(title,source){
       this.title=title;
       this.source=source;
@@ -46,7 +46,7 @@ function setMediaCard(photographerName,mediaData) {
     // link media
     const link = document.createElement('a');
       link.setAttribute('href','#');
-      const media = new mediaFactory(title,mediaSource);
+      const media = new MediaFactory(title,mediaSource);
       const mediaCard = media.createCard(typeMedia);
       mediaCard.classList.add('_articleMedia-media');
     link.appendChild(mediaCard);

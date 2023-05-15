@@ -19,14 +19,11 @@ body{
   font-family: $fontFamilyBase;
   color:$colorTextBase;
 }
+
 main{
   margin-top:8px;
 }
 
-// input:disabled{
-//   background-color: grey;
-// }
-// input:disabled:hover{
-//   background-color: grey;
-//   cursor: not-allowed;
-// }
+*:focus{
+  outline: 2px solid black;
+}

@@ -86,8 +86,9 @@
   &-item:nth-child(1)::after{
     bottom:59px;
   }
-  &-item:hover, &-item--selected{
+  &-item:hover, &-item--selected, &-item:focus{
     background-color: darken($colorBackgroundDark, 8%);
+    outline: none;
   }
 
   &-list{
@@ -95,6 +96,7 @@
     transform: scaleY(59px) ;transform-origin:top;
     z-index: -1;
   }
+
   &-btn{
     z-index: 1;
   }
