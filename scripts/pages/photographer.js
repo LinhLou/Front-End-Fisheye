@@ -11,6 +11,7 @@ async function displayIntro(photographer){
   photographersSection.appendChild(cardPhotographer);
   // create a button
   const btn = document.createElement('button');
+    btn.setAttribute('id','button-Contact');
     btn.setAttribute('role','button');
     btn.classList.add('btn', 'btn-large');
     btn.textContent="Contactez-moi";
