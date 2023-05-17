@@ -13,30 +13,48 @@ function setMediaCard(photographerName,mediaData) {
     createCard(typeMedia){
       switch(typeMedia){
         case 'image':
-          return imageCard(this.title, this.source);
+          return this.imageCard(this.title, this.source);
         case 'video':
-          return videoCard(this.title, this.source);
+          return this.videoCard(this.title, this.source);
       }
+    }
+    
+    imageCard = (title, source) =>{
+      const mediaCard = document.createElement('img');
+      mediaCard.setAttribute('src', source);
+      mediaCard.setAttribute('alt',`${title}, closeup view`);
+      return mediaCard;
+    }
+
+    videoCard = (title, source) =>{
+      const mediaCard = document.createElement('video');
+      mediaCard.setAttribute('controls','');
+      mediaCard.setAttribute('aria-label',`${title}, closeup view`);
+      const sourceMediaEle = document.createElement('source');
+      sourceMediaEle.setAttribute('src',source);
+      sourceMediaEle.setAttribute('type','video/mp4');
+      mediaCard.appendChild(sourceMediaEle);
+      return mediaCard;
     }
   }
 
-  const imageCard = (title, source) =>{
-    const mediaCard = document.createElement('img');
-    mediaCard.setAttribute('src', source);
-    mediaCard.setAttribute('alt',`${title}, closeup view`);
-    return mediaCard;
-  } 
+  // const imageCard = (title, source) =>{
+  //   const mediaCard = document.createElement('img');
+  //   mediaCard.setAttribute('src', source);
+  //   mediaCard.setAttribute('alt',`${title}, closeup view`);
+  //   return mediaCard;
+  // } 
 
-  const videoCard = (title, source) =>{
-    const mediaCard = document.createElement('video');
-    mediaCard.setAttribute('controls','');
-    mediaCard.setAttribute('aria-label',`${title}, closeup view`);
-    const sourceMediaEle = document.createElement('source');
-    sourceMediaEle.setAttribute('src',source);
-    sourceMediaEle.setAttribute('type','video/mp4');
-    mediaCard.appendChild(sourceMediaEle);
-    return mediaCard;
-  } 
+  // const videoCard = (title, source) =>{
+  //   const mediaCard = document.createElement('video');
+  //   mediaCard.setAttribute('controls','');
+  //   mediaCard.setAttribute('aria-label',`${title}, closeup view`);
+  //   const sourceMediaEle = document.createElement('source');
+  //   sourceMediaEle.setAttribute('src',source);
+  //   sourceMediaEle.setAttribute('type','video/mp4');
+  //   mediaCard.appendChild(sourceMediaEle);
+  //   return mediaCard;
+  // } 
 
   // set card DOM of each media of photographer
   function setMediaCardDOM(){
