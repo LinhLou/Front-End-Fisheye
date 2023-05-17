@@ -18,7 +18,7 @@ const setMediaInfosCardDom = (title,likes)=>{
 class Video {
   constructor(data){
     const {photographer, media} = data;
-
+    this.likes = media.likes;
     this.title = media.title;
     this.video = media.video;
     this.name = photographer.name;
