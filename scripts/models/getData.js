@@ -9,8 +9,8 @@ async function getPhotographersInfos() {
 
 async function getPhotographerDataById(id){
   const { photographers, media} = await getPhotographersInfos();
-  const photographer = photographers.filter((photographe)=>photographe.id==id);
+  const photographerInfos = photographers.filter((photographe)=>photographe.id==id);
   const medias = media.filter((media)=>media.photographerId==id);
-  return {photographer, medias};
+  return {photographerInfos, medias};
 }
 

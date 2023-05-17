@@ -160,7 +160,6 @@ class MenuSelectNavigation {
 }
 
 
-
 const selectSection = document.querySelector('._select');
 const action = new MenuSelectNavigation(selectSection);
 

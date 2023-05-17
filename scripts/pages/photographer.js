@@ -39,32 +39,33 @@ async function displayEncart(photographer,medias){
     main.appendChild(divEncart);
   }
 
-async function displayMedias(photographer,medias){
+async function displayMedias(data){
   // -----------Meadia section --------------------------------------------//
+  const {photographerInfos, mediasSorted}=data;
   const mediasSection = document.querySelector("._photographeMedias");
   mediasSection.innerHTML='';
-  medias.forEach((mediaData)=>{
-    const media = setMediaCard(photographer.name,mediaData);
-    const mediaCard = media.setMediaCardDOM();
+  const photographer =photographerInfos[0];
+  mediasSorted.forEach((media)=>{
+    const mediaObj = new MediaFactory();
+    const mediaCard = mediaObj.createMediaCard({photographer,media});
     mediasSection.appendChild(mediaCard);
   })
 }
 
 async function initIntro(){
-  const {photographer, medias} = await getPhotographerDataById(idPhotographer);
-  displayIntro(photographer[0]);
-  displayEncart(photographer[0],medias);
+  const {photographerInfos, medias} = await getPhotographerDataById(idPhotographer);
+  displayIntro(photographerInfos[0]);
+  displayEncart(photographerInfos[0],medias);
 }
 
 async function initMedia(){
-  const {photographer, medias} = await getPhotographerDataById(idPhotographer);
+  const {photographerInfos, medias} = await getPhotographerDataById(idPhotographer);
 
   const btnSelect = document.querySelector('._select-btn');
   const typeToSort = ((ele)=>ele.textContent=='Popularité'? 'likes': ele.textContent=='Date' ? 'date': 'title')(btnSelect);
-  const mediasSort = new SortData(medias);
-  const mediasSortByType = mediasSort.sortType(typeToSort);
-
-  displayMedias(photographer[0],mediasSortByType);
+  const mediasSortObj = new SortData(medias);
+  const mediasSorted = mediasSortObj.sortType(typeToSort);
+  displayMedias({photographerInfos,mediasSorted});
 }
 
 initIntro();
