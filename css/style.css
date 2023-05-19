@@ -346,6 +346,18 @@ body {
   height: 30px;
   object-fit: cover;
 }
+.modal--aniOpen {
+  animation: openModal 0.5s ease-in-out;
+}
+.modal--aniClose {
+  animation: closeModal 0.5s ease-in-out;
+}
+.modal-aniFormInvalid {
+  animation: aniFormInvalid 300ms ease-in-out 3;
+}
+.modal-aniFormInvalidRepeat {
+  animation: aniFormInvalidAgain 300ms ease-in-out 3;
+}
 
 .formData {
   display: grid;
@@ -374,6 +386,31 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes closeModal {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
+@keyframes aniFormInvalid {
+  from {
+    transform: translateX(20px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes aniFormInvalidAgain {
+  from {
+    transform: translateX(20px);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 

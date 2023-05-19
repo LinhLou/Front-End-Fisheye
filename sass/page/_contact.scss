@@ -31,9 +31,23 @@ body{
     height: 30px;
     object-fit: cover;
   }
-  // animation: showModal 0.3s ease-in-out;
+  &--aniOpen{
+    animation: openModal 0.5s ease-in-out;
+  }
+  
+  &--aniClose{
+    animation: closeModal 0.5s ease-in-out;
+  }
+
+  &-aniFormInvalid{
+    animation: aniFormInvalid 300ms ease-in-out 3;
+  }
+  &-aniFormInvalidRepeat{
+    animation: aniFormInvalidAgain 300ms ease-in-out 3;
+  }
 }
 .form{
+
   &Data{
     display: grid;
     width: 100%;
@@ -57,13 +71,32 @@ body{
 
 }
 
-@keyframes showModal{
-  0%{
+
+@keyframes openModal{
+  from{
     opacity: 0;
     // transform: translateY(0);
   }
   100%{
     opacity: 1;
     // transform: translateY(-62px);
+  }
+}
+
+@keyframes aniFormInvalid{
+  from{
+    transform: translateX(10px);
+  }
+  to{
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes aniFormInvalidAgain{
+  from{
+    transform: translateX(10px);
+  }
+  to{
+    transform: translateX(-10px);
   }
 }

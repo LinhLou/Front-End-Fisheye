@@ -26,7 +26,7 @@ class CheckInput{
     }
 
     checkPrenom = (text)=>{
-        if(text.length>2){
+        if(text.length>=2){
             return {condition:true,
                     errorMes:' '};
         }else{
@@ -51,13 +51,15 @@ class CheckInput{
 class ModalGestion{
     constructor(domNode){
         this.domNode = domNode;
+        this.modal = domNode.querySelector('.modal');
         this.closeX  = domNode.querySelector('.modal-close');
         this.btnSend = domNode.querySelector('#btnSendContact');
         this.inputEles = domNode.querySelectorAll('.formData-text');
+        this.formEle = domNode.querySelector('.form');
 
         // add event to check modal
         this.inputEles.forEach((ele)=>{ele.addEventListener('input',((event)=>{
-            this.onInputCheck(event.target)}));});
+            this.inputErrorMessageGestion(event.target)}));});
         this.inputEles.forEach((ele)=>{ele.addEventListener('click',this.onInputFocus)});
         this.inputEles.forEach((ele)=>{ele.addEventListener('keydown',this.onInputKeydown)});
 
@@ -70,26 +72,24 @@ class ModalGestion{
         // add event to close btn
         this.closeX.addEventListener('click',this.closeModal);
         // add event to submit btn
-        this.btnSend.addEventListener('click',((event)=>this.onSubmit(event)));
+        this.formEle.addEventListener('submit',((event)=>this.onSubmit(event)));
     }
 
-
-document.querySelector('._photographeIntro').addEventListener('click',((event)=>{// event delegation
-    if(event.target.id=='button-Contact'){
-        displayModal();
+    // open and close modal
+    displayModal = () => {
+        this.modal.className='modal modal--aniOpen'; 
+        this.domNode.style.display = "flex";
+        this.modal.focus();
     }
 
     closeModal = () => {
-        const modalContact = document.getElementById("contact_modal");
-        const modal = document.querySelector('.modal');
-        modal.classList.toggle('modal--aniClose');
-        setTimeout(()=>{modalContact.style.display = "none"},400);
+        this.modal.className='modal modal--aniClose';
+        setTimeout(()=>{this.domNode.style.display = "none"},400);
     }
 
 
-
-    onInputCheck = (ele)=>{
-        // check if condition is satisfied ->style valid else modify to invalid style and show error messages
+    inputErrorMessageGestion = (ele)=>{
+        // check if condition is satisfied ->style valid else modify it to invalid style and show error messages
         const inputObj = new CheckInput();
         const inputInfos = inputObj.check(ele);
 
@@ -112,11 +112,24 @@ document.querySelector('._photographeIntro').addEventListener('click',((event)=>
     onSubmit=(event)=>{
         event.preventDefault();
         //check if all input is valid
-        const checkInputsArray = [...this.inputEles].map((ele)=>{const checkEle = new CheckInput(); return checkEle.check(ele);});
+        const conditionInputs = [...this.inputEles].map((ele)=>{const checkEle = new CheckInput(); return checkEle.check(ele);});
 
-        const conditionForm = checkInputsArray.reduce((acc,ele)=>acc*ele.condition,true);
+        const conditionForm = conditionInputs.reduce((acc,ele)=>acc*ele.condition,true);
         if(conditionForm){
             this.showUserInfos();
+        }else{
+            [...this.inputEles].forEach((ele)=>{
+                this.inputErrorMessageGestion(ele);
+            });
+            this.formAnimationGestion();
+        }
+    }
+
+    formAnimationGestion = ()=>{
+        if(!this.modal.classList.contains('modal-aniFormInvalid')){
+            this.modal.classList.toggle('modal-aniFormInvalid');
+        }else{
+            this.modal.classList.toggle('modal-aniFormInvalidRepeat');
         }
     }
 
@@ -125,7 +138,6 @@ document.querySelector('._photographeIntro').addEventListener('click',((event)=>
             console.log(`${ele.labels[0].textContent}: ${ele.value}`);
         })
     }
-
     showErrorMessage = (ele,message)=>{
         ele.classList.remove('formData-text--valid');
         if(!ele.classList.contains('formData-text--invalid')){
@@ -145,4 +157,6 @@ document.querySelector('._photographeIntro').addEventListener('click',((event)=>
 }
 
 
+const modalContact = document.getElementById('contact_modal');
+const modalGestion = new ModalGestion(modalContact);
 
