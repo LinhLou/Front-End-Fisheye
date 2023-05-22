@@ -28,6 +28,11 @@ async function displayIntro(photographer){
   cardPhotographer.appendChild(cardPhotographer.firstChild);// move the photo to the end
   // add new class to article
   cardPhotographer.classList.add('article_photographer');  
+
+  // modal contact:
+  const modalContact = document.getElementById('contact_modal');
+  const modalGestion = new ModalGestion(modalContact);
+  modalGestion.addName(photographer.name);
 }
 
 async function displayEncart(photographer,medias){
@@ -57,6 +62,7 @@ async function initIntro(){
   const {photographerInfos, medias} = await getPhotographerDataById(idPhotographer);
   displayIntro(photographerInfos[0]);
   displayEncart(photographerInfos[0],medias);
+
 }
 
 async function initMedia(){

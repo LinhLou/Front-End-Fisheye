@@ -320,9 +320,11 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  background-color: rgba(1, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .modal {
@@ -376,13 +378,28 @@ body {
   height: 170px;
   resize: none;
 }
+.formData-text--invalid {
+  background-color: rgb(223, 85, 85);
+  border: 2px solid rgb(150, 15, 15);
+}
+.formData-text--valid {
+  background-color: rgb(63, 167, 71);
+  border: 2px solid rgb(45, 122, 14);
+}
+.formData[data-error]::after {
+  content: attr(data-error);
+  color: black;
+  font-size: 16px;
+  margin: 10px 0 0;
+}
 .form button {
   margin-top: 26px;
 }
 
-@keyframes showModal {
-  0% {
+@keyframes openModal {
+  from {
     opacity: 0;
+    transform: translateY(-150px);
   }
   100% {
     opacity: 1;
@@ -392,25 +409,25 @@ body {
   from {
     opacity: 1;
   }
-  to {
+  100% {
     opacity: 0;
     transform: translateY(-150px);
   }
 }
 @keyframes aniFormInvalid {
   from {
-    transform: translateX(20px);
+    transform: translateX(10px);
   }
   to {
-    transform: translateX(0);
+    transform: translateX(-10px);
   }
 }
 @keyframes aniFormInvalidAgain {
   from {
-    transform: translateX(20px);
+    transform: translateX(10px);
   }
   to {
-    transform: translateX(0);
+    transform: translateX(-10px);
   }
 }
 

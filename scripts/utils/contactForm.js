@@ -56,6 +56,7 @@ class ModalGestion{
         this.btnSend = domNode.querySelector('#btnSendContact');
         this.inputEles = domNode.querySelectorAll('.formData-text');
         this.formEle = domNode.querySelector('.form');
+        this.headerEle = domNode.querySelector('#modal-heading');
 
         // add event to open modal
         document.body.addEventListener('click',((event)=>{
@@ -72,6 +73,10 @@ class ModalGestion{
         // add event to check input modal
         this.inputEles.forEach((ele)=>{ele.addEventListener('input',((event)=>{
             this.inputErrorMessageGestion(event.target)}));});
+    }
+
+    addName =(name)=>{
+        this.headerEle.innerHTML = `Contactez-moi <br> ${name}`;
     }
     
     // open and close modal
@@ -162,6 +167,4 @@ class ModalGestion{
 }
 
 
-const modalContact = document.getElementById('contact_modal');
-const modalGestion = new ModalGestion(modalContact);
 
