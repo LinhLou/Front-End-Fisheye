@@ -35,30 +35,30 @@
       </section>
 
     </main>
-    <!-- <div id="contact_modal">
-			<div class="modal">
+    <div id="contact_modal" aria-labelledby="modal-heading">
+			<div class="modal" tabindex="-1">
 				<header class="modal-header">
-          <h2 class="modal-heading">Contactez-moi</h2>
-          <img class="modal-close"src="assets/icons/close.svg" alt="close contact form" onclick="closeModal()" />
+          <h2 class="modal-heading" id ="modal-heading">Contactez-moi</h2>
+          <img class="modal-close"src="assets/icons/close.svg" alt="close contact form" tabindex="0"/>
         </header>
 				<form class="form">
 					<div class="formData">
-						<label for="prenom" class="formData-label">Prénom</label>
-						<input id="prenom" type="text" class="formData-text"/>
+						<label for="prenom" id="label-prenom" class="formData-label">Prénom</label>
+						<input id="prenom" type="text" class="formData-text" aria-labelledby="label-prenom"/>
 					</div>
           <div class="formData">
-						<label for="nom" class="formData-label">Nom</label>
-						<input id="nom" type="text" class="formData-text"/>
+						<label for="nom" id="label-nom"class="formData-label">Nom</label>
+						<input id="nom" type="text" class="formData-text" aria-labelledby="label-nom"/>
 					</div>
           <div class="formData">
-						<label for="email" class="formData-label">Email</label>
-						<input id="email" class="formData-text"/>
+						<label for="email" id="label-email" class="formData-label">Email</label>
+						<input id="email" class="formData-text" aria-labelledby="label-email"/>
 					</div>
           <div class="formData">
-						<label for="message" class="formData-label">Votre message</label>
-						<textarea name="message" id="message" cols="30" rows="10" class="formData-text formData-text--area"></textarea>
+						<label for="message" id="label-message" class="formData-label">Votre message</label>
+						<textarea name="message" id="message" cols="30" rows="10" class="formData-text formData-text--area" aria-labelledby="label-message"></textarea>
 					</div>
-          <button class="btn btn-small">Envoyer</button>
+          <button id = "btnSendContact" class="btn btn-small" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div> -->

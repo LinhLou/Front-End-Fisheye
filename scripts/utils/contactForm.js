@@ -57,12 +57,6 @@ class ModalGestion{
         this.inputEles = domNode.querySelectorAll('.formData-text');
         this.formEle = domNode.querySelector('.form');
 
-        // add event to check modal
-        this.inputEles.forEach((ele)=>{ele.addEventListener('input',((event)=>{
-            this.inputErrorMessageGestion(event.target)}));});
-        this.inputEles.forEach((ele)=>{ele.addEventListener('click',this.onInputFocus)});
-        this.inputEles.forEach((ele)=>{ele.addEventListener('keydown',this.onInputKeydown)});
-
         // add event to open modal
         document.body.addEventListener('click',((event)=>{
             if(event.target.id=='button-Contact'){
@@ -71,10 +65,15 @@ class ModalGestion{
         }));
         // add event to close btn
         this.closeX.addEventListener('click',this.closeModal);
+        this.closeX.addEventListener('keydown',this.onCloseKeydown);
+        this.modal.addEventListener('keydown', this.onCloseKeydown);
         // add event to submit btn
         this.formEle.addEventListener('submit',((event)=>this.onSubmit(event)));
+        // add event to check input modal
+        this.inputEles.forEach((ele)=>{ele.addEventListener('input',((event)=>{
+            this.inputErrorMessageGestion(event.target)}));});
     }
-
+    
     // open and close modal
     displayModal = () => {
         this.modal.className='modal modal--aniOpen'; 
@@ -83,8 +82,10 @@ class ModalGestion{
     }
 
     closeModal = () => {
+        const btnContact = document.getElementById('button-Contact');
         this.modal.className='modal modal--aniClose';
         setTimeout(()=>{this.domNode.style.display = "none"},400);
+        btnContact.focus();
     }
 
 
@@ -101,14 +102,17 @@ class ModalGestion{
         }
     }
 
-    
-    onInputFocus = ()=>{
-        this.inputEles.forEach((input)=>{})
+    onCloseKeydown =(event)=>{
+        const key = event.key;
+        switch(key){
+            case 'Escape':
+                this.closeModal();
+                break;
+            default:
+                break;
+        }
     }
-    
-    onInputKeydown = ()=>{
-        
-    }
+
     onSubmit=(event)=>{
         event.preventDefault();
         //check if all input is valid
@@ -117,6 +121,7 @@ class ModalGestion{
         const conditionForm = conditionInputs.reduce((acc,ele)=>acc*ele.condition,true);
         if(conditionForm){
             this.showUserInfos();
+            this.closeModal();
         }else{
             [...this.inputEles].forEach((ele)=>{
                 this.inputErrorMessageGestion(ele);
