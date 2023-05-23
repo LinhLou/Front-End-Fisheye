@@ -80,10 +80,10 @@ async function displayMedias(data){
   })
 }
 
+
 async function displayLightBox(data){
   const {photographerInfos, mediasSorted}=data;
-  const lightboxEle = document.querySelector('.lightbox-container');
-  const lightbox = new LightboxGestion(lightboxEle,photographerInfos, mediasSorted);
+
 }
 
 
@@ -102,8 +102,8 @@ async function initMedia(){
   const mediasSortObj = new SortData(medias);
   const mediasSorted = mediasSortObj.sortType(typeToSort);
   displayMedias({photographerInfos,mediasSorted});
-  displayLightBox({photographerInfos,mediasSorted});
 }
 
 initIntro();
 initMedia();
+

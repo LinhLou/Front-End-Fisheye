@@ -460,6 +460,7 @@ body {
   height: 90vh;
   width: 1050px;
   object-fit: cover;
+  object-position: 0px;
 }
 .lightbox i {
   margin: auto;
