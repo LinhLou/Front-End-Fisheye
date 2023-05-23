@@ -52,11 +52,40 @@ async function displayMedias(data){
   mediasSection.innerHTML='';
   const photographer =photographerInfos[0];
   mediasSorted.forEach((media)=>{
+    const articleMedia = document.createElement('article');
+    articleMedia.classList.add('_articleMedia');
+    // link contains photo or video
+    const linkMedia = document.createElement('a');
+    linkMedia.setAttribute('href',`#${media.photographerId}`);
     const mediaObj = new MediaFactory();
     const mediaCard = mediaObj.createMediaCard({photographer,media});
-    mediasSection.appendChild(mediaCard);
+    linkMedia.appendChild(mediaCard);
+    // infos
+    const infosCard = document.createElement('div');
+    const mediaTitle = document.createElement('h3');
+    mediaTitle.textContent = media.title;
+    const countHeart = document.createElement('p');
+      countHeart.textContent = media.likes;
+    const iconHeart = document.createElement('i');
+      iconHeart.setAttribute('aria-label','likes');
+      iconHeart.classList.add('fa-solid', 'fa-heart');
+    infosCard.classList.add('_articleMedia-infos');
+    infosCard.appendChild(mediaTitle);
+    infosCard.appendChild(countHeart);
+    infosCard.appendChild(iconHeart);
+    // display
+    articleMedia.appendChild(linkMedia);
+    articleMedia.appendChild(infosCard);
+    mediasSection.appendChild(articleMedia);
   })
 }
+
+async function displayLightBox(data){
+  const {photographerInfos, mediasSorted}=data;
+  const lightboxEle = document.querySelector('.lightbox-container');
+  const lightbox = new LightboxGestion(lightboxEle,photographerInfos, mediasSorted);
+}
+
 
 async function initIntro(){
   const {photographerInfos, medias} = await getPhotographerDataById(idPhotographer);
@@ -73,6 +102,7 @@ async function initMedia(){
   const mediasSortObj = new SortData(medias);
   const mediasSorted = mediasSortObj.sortType(typeToSort);
   displayMedias({photographerInfos,mediasSorted});
+  displayLightBox({photographerInfos,mediasSorted});
 }
 
 initIntro();
