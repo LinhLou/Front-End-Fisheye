@@ -11,7 +11,6 @@ class Video {
   createVideoCard = () =>{
     const mediaCard = document.createElement('video');
     mediaCard.setAttribute('id',this.id);
-    mediaCard.setAttribute('controls','');
     mediaCard.setAttribute('aria-label',`${this.title}, closeup view`);
     const sourceMediaEle = document.createElement('source');
     sourceMediaEle.setAttribute('src',this.source);

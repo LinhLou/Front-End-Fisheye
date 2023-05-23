@@ -81,11 +81,6 @@ async function displayMedias(data){
 }
 
 
-async function displayLightBox(data){
-  const {photographerInfos, mediasSorted}=data;
-
-}
-
 
 async function initIntro(){
   const {photographerInfos, medias} = await getPhotographerDataById(idPhotographer);
