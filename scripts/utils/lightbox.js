@@ -29,13 +29,15 @@ class LightboxGestion{
   }
 
   onKeydownMedia = (event)=>{
-    const key = event.key;
-    switch(key){
-      case 'Enter':
-        this.openLightbox();
-        this.currentMedia(event);
-        this.closeEle.focus();
-      break;
+    if(event.target.classList.contains('_articleMedia-media')){
+      const key = event.key;
+      switch(key){
+        case 'Enter':
+          this.openLightbox();
+          this.currentMedia(event);
+          this.closeEle.focus();
+        break;
+      }
     }
   }
 

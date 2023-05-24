@@ -38,12 +38,12 @@ async function displayIntro(photographer){
 async function displayEncart(photographer,medias){
 
   // -------------encart----------------------------------//
-    const main = document.getElementById('_main');
-    const divEncart = document.createElement('div');
-      divEncart.innerHTML =`<div>${medias[0].likes} <i class="fa-solid fa-heart"></i>${photographer.price}€ / jour </div>`;
-      divEncart.classList.add('encart');
-    main.appendChild(divEncart);
-  }
+  const main = document.getElementById('_main');
+  const divEncart = document.createElement('div');
+    divEncart.innerHTML =`<div>${medias[0].likes} <i class="fa-solid fa-heart"></i>${photographer.price}€ / jour </div>`;
+    divEncart.classList.add('encart');
+  main.appendChild(divEncart);
+}
 
 async function displayMedias(data){
   // -----------Meadia section --------------------------------------------//

@@ -59,11 +59,11 @@ class ModalGestion{
         this.headerEle = domNode.querySelector('#modal-heading');
 
         // add event to open modal
-        document.body.addEventListener('click',((event)=>{
-            if(event.target.id=='button-Contact'){
-                this.displayModal();
-            }
-        }));
+        document.body.addEventListener('click',((event)=>this.onClickBtn(event)));
+
+        document.body.addEventListener('keydown',((event)=>this.onKeydownBtn(event)));
+
+
         // add event to close btn
         this.closeX.addEventListener('click',this.closeModal);
         this.closeX.addEventListener('keydown',this.onCloseKeydown);
@@ -73,6 +73,8 @@ class ModalGestion{
         // add event to check input modal
         this.inputEles.forEach((ele)=>{ele.addEventListener('input',((event)=>{
             this.inputErrorMessageGestion(event.target)}));});
+
+        this.btnSend.addEventListener('keydown',((event)=>this.onKeydownBtnSend(event)));
     }
 
     addName =(name)=>{
@@ -86,13 +88,31 @@ class ModalGestion{
         this.modal.focus();
     }
 
+    onClickBtn = (event)=>{
+        if(event.target.id=='button-Contact'){
+            this.displayModal();
+        }
+    }
+
+    onKeydownBtn = (event)=>{
+        if(event.target.id=='button-Contact'){
+            const key = event.key;
+            switch(key){
+                case 'Enter':
+                    this.displayModal();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     closeModal = () => {
         const btnContact = document.getElementById('button-Contact');
         this.modal.className='modal modal--aniClose';
         setTimeout(()=>{this.domNode.style.display = "none"},400);
         btnContact.focus();
     }
-
 
     inputErrorMessageGestion = (ele)=>{
         // check if condition is satisfied ->style valid else modify it to invalid style and show error messages
@@ -118,21 +138,18 @@ class ModalGestion{
         }
     }
 
+    onKeydownBtnSend = (event)=>{
+        const key = event.key;
+        switch(key){
+            case 'Enter':
+                this.submitGestion(event);
+                break;
+            default:
+                break;
+        }      
+    }
     onSubmit=(event)=>{
-        event.preventDefault();
-        //check if all input is valid
-        const conditionInputs = [...this.inputEles].map((ele)=>{const checkEle = new CheckInput(); return checkEle.check(ele);});
-
-        const conditionForm = conditionInputs.reduce((acc,ele)=>acc*ele.condition,true);
-        if(conditionForm){
-            this.showUserInfos();
-            this.closeModal();
-        }else{
-            [...this.inputEles].forEach((ele)=>{
-                this.inputErrorMessageGestion(ele);
-            });
-            this.formAnimationGestion();
-        }
+        this.submitGestion(event);
     }
 
     formAnimationGestion = ()=>{
@@ -162,6 +179,23 @@ class ModalGestion{
         }
         ele.parentElement.removeAttribute('data-error');
 
+    }
+
+    submitGestion = (event)=>{
+        event.preventDefault();
+        //check if all input is valid
+        const conditionInputs = [...this.inputEles].map((ele)=>{const checkEle = new CheckInput(); return checkEle.check(ele);});
+
+        const conditionForm = conditionInputs.reduce((acc,ele)=>acc*ele.condition,true);
+        if(conditionForm){
+            this.showUserInfos();
+            this.closeModal();
+        }else{
+            [...this.inputEles].forEach((ele)=>{
+                this.inputErrorMessageGestion(ele);
+            });
+            this.formAnimationGestion();
+        }
     }
 
 }
