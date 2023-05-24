@@ -29,7 +29,7 @@ class LightboxGestion{
   }
 
   onKeydownMedia = (event)=>{
-    if(event.target.classList.contains('_articleMedia-media')){
+    if(event.target.classList.contains('_articleMedia-link')||event.target.classList.contains('_articleMedia-media')){
       const key = event.key;
       switch(key){
         case 'Enter':
@@ -90,39 +90,27 @@ class LightboxGestion{
   currentMedia = (event)=>{
     this.currentEle = event.target.closest('article');
     this.showMedia(this.currentEle);
-    if(!this.currentEle.previousElementSibling){
-      this.arrowLeft.style.visibility ='hidden';
-    }else{
-      this.arrowLeft.style.visibility ='visible';
-    }
-    if(!this.currentEle.nextElementSibling){
-      this.arrowRight.style.visibility ='hidden';
-    }else{
-      this.arrowRight.style.visibility ='visible';
-    }
   }
 
   nextMedia = ()=>{
     const nextEle = this.currentEle.nextElementSibling;
     if(nextEle){
-      this.arrowLeft.style.visibility='visible';
       this.showMedia(nextEle);
       this.currentEle = nextEle;
-      if(!nextEle.nextElementSibling){
-        this.arrowRight.style.visibility='hidden';
-      }
+    }else{
+      this.currentEle = document.querySelector('._photographeMedias').firstChild;
+      this.showMedia(this.currentEle);
     }
   }
   
   preMedia = ()=>{
     const prevEle = this.currentEle.previousElementSibling;
     if(prevEle){
-      this.arrowRight.style.visibility='visible';
       this.showMedia(prevEle);
       this.currentEle = prevEle;
-      if(!prevEle.previousElementSibling){
-        this.arrowLeft.style.visibility='hidden';
-      }
+    }else{
+      this.currentEle = document.querySelector('._photographeMedias').lastChild;
+      this.showMedia(this.currentEle);
     }
   }
   

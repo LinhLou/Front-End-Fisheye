@@ -57,6 +57,7 @@ async function displayMedias(data){
     // link contains photo or video
     const linkMedia = document.createElement('a');
     linkMedia.setAttribute('href',`#${media.photographerId}`);
+    linkMedia.classList.add('_articleMedia-link');
     const mediaObj = new MediaFactory();
     const mediaCard = mediaObj.createMediaCard({photographer,media});
     linkMedia.appendChild(mediaCard);
