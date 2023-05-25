@@ -29,6 +29,10 @@ async function displayIntro(photographer){
   // add new class to article
   cardPhotographer.classList.add('article_photographer');  
 
+
+}
+
+async function displayModalContact(photographer){
   // modal contact:
   const modalContact = document.getElementById('contact_modal');
   const modalGestion = new ModalGestion(modalContact);
@@ -36,11 +40,11 @@ async function displayIntro(photographer){
 }
 
 async function displayEncart(photographer,medias){
-
   // -------------encart----------------------------------//
   const main = document.getElementById('_main');
   const divEncart = document.createElement('div');
-    divEncart.innerHTML =`<div>${medias[0].likes} <i class="fa-solid fa-heart"></i>${photographer.price}€ / jour </div>`;
+  const totalLikes = medias.reduce((acc,ele)=>acc+ele.likes,0);
+    divEncart.innerHTML =`<div><span class='totalLikes'>${totalLikes}</span> <i class="fa-solid fa-heart"></i>${photographer.price}€ / jour </div>`;
     divEncart.classList.add('encart');
   main.appendChild(divEncart);
 }
@@ -68,6 +72,8 @@ async function displayMedias(data){
     const countHeart = document.createElement('p');
       countHeart.textContent = media.likes;
     const iconHeart = document.createElement('i');
+      iconHeart.setAttribute('id',media.id);
+      iconHeart.setAttribute('tabindex','0');
       iconHeart.setAttribute('aria-label','likes');
       iconHeart.classList.add('fa-solid', 'fa-heart');
     infosCard.classList.add('_articleMedia-infos');
@@ -82,12 +88,11 @@ async function displayMedias(data){
 }
 
 
-
 async function initIntro(){
   const {photographerInfos, medias} = await getPhotographerDataById(idPhotographer);
   displayIntro(photographerInfos[0]);
+  displayModalContact(photographerInfos[0]);
   displayEncart(photographerInfos[0],medias);
-
 }
 
 async function initMedia(){

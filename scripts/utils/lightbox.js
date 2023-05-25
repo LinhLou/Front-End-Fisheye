@@ -9,9 +9,11 @@ class LightboxGestion{
     // open lightbox
     document.body.addEventListener('click',((event)=>this.onClickMedia(event)));
     document.body.addEventListener('keydown',((event)=>this.onKeydownMedia(event)));
+
     // close lightbox
     this.closeEle.addEventListener('click',this.onClickCloseLightbox);
     this.closeEle.addEventListener('keydown',this.onKeydownCloseLightbox);
+    this.domNode.addEventListener('keydown',this.onKeydownCloseLightbox);
     // go to previous media
     this.arrowLeft.addEventListener('click',this.preMedia);
     this.arrowLeft.addEventListener('keydown',this.onKeydownArrowLeft);
