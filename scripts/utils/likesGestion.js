@@ -68,6 +68,3 @@ class LikesGestion{
   }
 
 }
-
-const mediaSection = document.querySelector('._photographeMedias');
-const likesGestionObj = new LikesGestion(mediaSection);

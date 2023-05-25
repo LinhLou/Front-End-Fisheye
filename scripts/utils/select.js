@@ -21,7 +21,7 @@ class MenuSelectNavigation {
 
   }
 
-  // event handlers
+  // event handlers method
   onBtnClick = ()=>{
     this.openSelectMenu();
   }
@@ -159,7 +159,4 @@ class MenuSelectNavigation {
   }
 }
 
-
-const selectSection = document.querySelector('._select');
-const action = new MenuSelectNavigation(selectSection);
 

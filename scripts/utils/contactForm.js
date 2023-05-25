@@ -56,7 +56,6 @@ class ModalGestion{
         this.btnSend = domNode.querySelector('#btnSendContact');
         this.inputEles = domNode.querySelectorAll('.formData-text');
         this.formEle = domNode.querySelector('.form');
-        this.headerEle = domNode.querySelector('#modal-heading');
 
         // add event to open modal
         document.body.addEventListener('click',((event)=>this.onClickBtn(event)));
@@ -66,7 +65,7 @@ class ModalGestion{
 
         // add event to close btn
         this.closeX.addEventListener('click',this.closeModal);
-        this.closeX.addEventListener('keydown',this.onCloseKeydown);
+        this.closeX.addEventListener('keydown',((event)=>this.onKeydownCloseX(event)));
         this.modal.addEventListener('keydown', this.onCloseKeydown);
         // add event to submit btn
         this.formEle.addEventListener('submit',((event)=>this.onSubmit(event)));
@@ -77,9 +76,7 @@ class ModalGestion{
         this.btnSend.addEventListener('keydown',((event)=>this.onKeydownBtnSend(event)));
     }
 
-    addName =(name)=>{
-        this.headerEle.innerHTML = `Contactez-moi <br> ${name}`;
-    }
+
     
     // open and close modal
     displayModal = () => {
@@ -88,6 +85,14 @@ class ModalGestion{
         this.modal.focus();
     }
 
+    closeModal = () => {
+        const btnContact = document.getElementById('button-Contact');
+        this.modal.className='modal modal--aniClose';
+        setTimeout(()=>{this.domNode.style.display = "none"},400);
+        btnContact.focus();
+    }
+
+    // event handler methode
     onClickBtn = (event)=>{
         if(event.target.id=='button-Contact'){
             this.displayModal();
@@ -107,27 +112,18 @@ class ModalGestion{
         }
     }
 
-    closeModal = () => {
-        const btnContact = document.getElementById('button-Contact');
-        this.modal.className='modal modal--aniClose';
-        setTimeout(()=>{this.domNode.style.display = "none"},400);
-        btnContact.focus();
-    }
-
-    inputErrorMessageGestion = (ele)=>{
-        // check if condition is satisfied ->style valid else modify it to invalid style and show error messages
-        const inputObj = new CheckInput();
-        const inputInfos = inputObj.check(ele);
-
-        const {condition, errorMes} = inputInfos;
-        if(!condition){
-            this.showErrorMessage(ele,errorMes);
-        }else{
-            this.removeErrorMessage(ele);
+    onCloseKeydown =(event)=>{
+        const key = event.key;
+        switch(key){
+            case 'Escape':
+                this.closeModal();
+                break;
+            default:
+                break;
         }
     }
 
-    onCloseKeydown =(event)=>{
+    onKeydownCloseX =(event)=>{
         const key = event.key;
         switch(key){
             case 'Escape':
@@ -148,6 +144,7 @@ class ModalGestion{
                 break;
         }      
     }
+
     onSubmit=(event)=>{
         this.submitGestion(event);
     }
@@ -165,6 +162,20 @@ class ModalGestion{
             console.log(`${ele.labels[0].textContent}: ${ele.value}`);
         })
     }
+
+    inputErrorMessageGestion = (ele)=>{
+        // check if condition is satisfied ->style valid else modify it to invalid style and show error messages
+        const inputObj = new CheckInput();
+        const inputInfos = inputObj.check(ele);
+
+        const {condition, errorMes} = inputInfos;
+        if(!condition){
+            this.showErrorMessage(ele,errorMes);
+        }else{
+            this.removeErrorMessage(ele);
+        }
+    }
+
     showErrorMessage = (ele,message)=>{
         ele.classList.remove('formData-text--valid');
         if(!ele.classList.contains('formData-text--invalid')){
@@ -172,6 +183,7 @@ class ModalGestion{
         }
         ele.parentElement.setAttribute('data-error', message);
     }
+
     removeErrorMessage = (ele)=>{
         ele.classList.remove('formData-text--invalid');
         if(!ele.classList.contains('formData-text--valid')){
@@ -197,7 +209,6 @@ class ModalGestion{
             this.formAnimationGestion();
         }
     }
-
 }
 
 

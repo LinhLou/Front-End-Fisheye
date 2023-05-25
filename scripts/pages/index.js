@@ -20,7 +20,7 @@
 
     async function init() {
         // Récupère les datas des photographes
-        const { photographers } = await getPhotographersInfos();
+        const { photographers } = await getData();
         displayData(photographers);
     };
     

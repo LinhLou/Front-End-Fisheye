@@ -1,8 +1,29 @@
-// get id of photographer
-const {href} = window.location; 
-const idPhotographer = href.split('#')[1];
+// Model
+async function getDataById(id){
+  const { photographers, media} = await getData();
+  const photographerInfos = photographers.filter((photographe)=>photographe.id==id);
+  const medias = media.filter((media)=>media.photographerId==id);
+  return {photographerInfos, medias};
+}
 
-// function to display photographer page
+async function getPhotographerData(){
+  const {href} = window.location; 
+  const idPhotographer = href.split('#')[1];
+  const {photographerInfos, medias} = await getDataById(idPhotographer);
+  return {photographerInfos, medias};
+}
+
+async function dataProcess(){
+  const {photographerInfos, medias} = await getPhotographerData();
+
+  const btnSelect = document.querySelector('._select-btn');
+  const typeToSort = ((ele)=>ele.textContent=='Popularité'? 'likes': ele.textContent=='Date' ? 'date': 'title')(btnSelect);
+  const mediasSortObj = new SortData(medias);
+  const mediasSorted = mediasSortObj.sortType(typeToSort);
+  return {photographerInfos,mediasSorted};
+}
+
+// View
 async function displayIntro(photographer){
   // -----------Introduction section ----------------------------------------//
   const photographersSection = document.querySelector("._photographeIntro");
@@ -28,15 +49,6 @@ async function displayIntro(photographer){
   cardPhotographer.appendChild(cardPhotographer.firstChild);// move the photo to the end
   // add new class to article
   cardPhotographer.classList.add('article_photographer');  
-
-
-}
-
-async function displayModalContact(photographer){
-  // modal contact:
-  const modalContact = document.getElementById('contact_modal');
-  const modalGestion = new ModalGestion(modalContact);
-  modalGestion.addName(photographer.name);
 }
 
 async function displayEncart(photographer,medias){
@@ -87,24 +99,49 @@ async function displayMedias(data){
   })
 }
 
+async function displayModalContact(photographer){
+  const headerEle = document.querySelector('#modal-heading');
+  headerEle.innerHTML = `Contactez-moi <br> ${photographer.name}`;
+}
 
-async function initIntro(){
-  const {photographerInfos, medias} = await getPhotographerDataById(idPhotographer);
+async function modalContactControl(){
+  // modal contact:
+  const modalContact = document.getElementById('contact_modal');
+  const modalGestion = new ModalGestion(modalContact);
+}
+
+// control
+function lightboxControl(){
+  const lightboxEle = document.querySelector('.lightbox-container');
+  const lightbox = new LightboxGestion(lightboxEle);
+}
+
+function likesControl(){
+  const mediaSection = document.querySelector('._photographeMedias');
+  const likesGestionObj = new LikesGestion(mediaSection);
+}
+
+function selectGestion(){
+  const selectSection = document.querySelector('._select');
+  const selectObj = new MenuSelectNavigation(selectSection);
+}
+
+
+async function initPhotographerPage(){
+  const {photographerInfos, medias} = await getPhotographerData();
   displayIntro(photographerInfos[0]);
   displayModalContact(photographerInfos[0]);
   displayEncart(photographerInfos[0],medias);
+  lightboxControl();
+  likesControl();
+  modalContactControl();
+  selectGestion();
 }
 
 async function initMedia(){
-  const {photographerInfos, medias} = await getPhotographerDataById(idPhotographer);
-
-  const btnSelect = document.querySelector('._select-btn');
-  const typeToSort = ((ele)=>ele.textContent=='Popularité'? 'likes': ele.textContent=='Date' ? 'date': 'title')(btnSelect);
-  const mediasSortObj = new SortData(medias);
-  const mediasSorted = mediasSortObj.sortType(typeToSort);
+  const {photographerInfos, mediasSorted} = await dataProcess();
   displayMedias({photographerInfos,mediasSorted});
 }
 
-initIntro();
+initPhotographerPage();
 initMedia();
-

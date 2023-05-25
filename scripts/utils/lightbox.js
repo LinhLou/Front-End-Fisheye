@@ -140,5 +140,3 @@ class LightboxGestion{
 }
 
 
-const lightboxEle = document.querySelector('.lightbox-container');
-const lightbox = new LightboxGestion(lightboxEle);
