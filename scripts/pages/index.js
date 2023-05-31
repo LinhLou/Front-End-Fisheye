@@ -16,13 +16,13 @@
             photographerCardDOM.insertBefore(link,photographerCardDOM.firstChild);
 
         });
-    };
+    }
 
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getData();
         displayData(photographers);
-    };
+    }
     
     init();
     
