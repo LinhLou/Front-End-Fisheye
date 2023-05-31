@@ -8,7 +8,7 @@
             photographersSection.appendChild(photographerCardDOM);
             // add link to photographer
             const link = document.createElement('a');
-                link.setAttribute("href",`../../photographer.html#${photographer.id}`);
+                link.setAttribute("href",`photographer.html#${photographer.id}`);
                 link.setAttribute("aria-label",photographer.name);
                 link.classList.add('article_link');
             link.appendChild(photographerCardDOM.children[0]);

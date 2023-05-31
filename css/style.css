@@ -462,7 +462,7 @@ body {
   object-fit: cover;
   object-position: 0px;
 }
-.lightbox i {
+.lightbox span.fa-solid {
   margin: auto;
   font-size: 30px;
   color: #901C1C;
